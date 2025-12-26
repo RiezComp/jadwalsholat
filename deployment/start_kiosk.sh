@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Configuration
-APP_DIR="/home/pi/quantum-oort" # Change this if you put the folder somewhere else
+APP_DIR="$HOME/jadwalsholat" # Automatically uses the current user's home directory
 PORT=5000
 
 # 1. Disable Screen Blanking (Prevent sleeping)
