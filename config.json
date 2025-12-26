@@ -1,0 +1,19 @@
+{
+    "city": "Bandung",
+    "country": "Indonesia",
+    "method": 3,
+    "adjustment": 0,
+    "latitude": -6.9175,
+    "longitude": 107.6191,
+    "mosque_name": "Masjid Jasma Digital Jakarta",
+    "mosque_address": "Jl. Tebet Timur Dalam 7i no 6 Tebet Dki Jakarta",
+    "mosque_phone": "HP: 0821-8000-2921",
+    "iqomah_delay_minutes": 10,
+    "background_interval": 10,
+    "running_text": [
+        "Selamat Datang di Masjid Jasma Digital Jakarta.",
+        "Mohon nonaktifkan HP saat sholat berjamaah.",
+        "Luruskan dan rapatkan shaf.",
+        "Hadirilah kajian rutin setiap sabtu ba'da maghrib."
+    ]
+}

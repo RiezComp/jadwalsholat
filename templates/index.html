@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masjid Display</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+    <!-- Background Layer -->
+    <div class="bg-layer" id="bg-layer">
+        <div class="bg-image active" style="background-image: url('/static/bg1.png');"></div>
+        <div class="bg-image" style="background-image: url('/static/bg2.png');"></div>
+        <div class="bg-image" style="background-image: url('/static/bg3.png');"></div>
+    </div>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="date-box">
+            <div id="hijri-date">Loading...</div>
+            <div id="gregorian-date" class="gregorian">Loading...</div>
+        </div>
+        <div class="mosque-info">
+            <div class="mosque-icon"><img src="https://cdn-icons-png.flaticon.com/512/2319/2319886.png" height="50">
+            </div>
+            <div class="mosque-text">
+                <h1 id="mosque-name">Masjid Name</h1>
+                <p id="mosque-address">Address Line</p>
+                <p id="mosque-phone">HP: ...</p>
+            </div>
+        </div>
+        <div class="clock-box" id="clock">00:00:00</div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+
+        <!-- Pre-Adhan Overlay (-10 Minutes) -->
+        <div id="pre-adhan-overlay" class="iqomah-overlay hidden">
+            <div class="iqomah-label" style="color: #ffd700;">MENUJU WAKTU</div>
+            <div class="iqomah-sub" id="pre-adhan-name" style="font-size: 4rem; color: #fff; margin: 20px 0;">DZUHUR
+            </div>
+            <div class="iqomah-timer" id="pre-adhan-timer">10:00</div>
+        </div> 
+
+        <!-- Adhan Overlay -->
+        <div id="adhan-overlay" class="iqomah-overlay hidden" style="border-color: #ffd700;">
+            <div class="iqomah-label" style="font-size: 4rem; animation: blink 1s infinite;">ADZAN</div>
+            <div class="iqomah-sub" id="adhan-name" style="font-size: 5rem; color: #fff; margin-top: 20px;">DZUHUR</div>
+        </div>
+
+        <!-- Iqomah Overlay -->
+        <div id="iqomah-overlay" class="iqomah-overlay hidden">
+            <div class="iqomah-label">IQOMAH</div>
+            <div class="iqomah-timer" id="iqomah-timer">00:00</div>
+            <div class="iqomah-sub" id="iqomah-sub">Menuju Sholat</div>
+        </div>
+
+        <!-- Sholat Overlay (Blank/Dark) -->
+        <div id="sholat-overlay" class="iqomah-overlay hidden"
+            style="background: #000; border: none; width: 100vw; height: 100vh; position: fixed; top: 0; left: 0; z-index: 1000; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+            <div class="sholat-label" style="font-size: 4rem; color: #fff;">LURUSKAN DAN RAPATKAN SHAF</div>
+            <div class="sholat-sub" style="margin-top: 20px; color: #999;">Matikan Handphone Anda</div>
+        </div>
+
+    </div>
+
+    <!-- Bottom Strip -->
+    <div class="prayer-strip">
+        <div class="prayer-item" id="prayer-imsak">
+            <div class="p-name">Imsak</div>
+            <div class="p-time">--:--</div>
+        </div>
+        <div class="prayer-item" id="prayer-subuh">
+            <div class="p-name">Subuh</div>
+            <div class="p-time">--:--</div>
+        </div>
+        <div class="prayer-item" id="prayer-terbit">
+            <div class="p-name">Terbit</div>
+            <div class="p-time">--:--</div>
+        </div>
+        <div class="prayer-item" id="prayer-dzuhur">
+            <div class="p-name">Dzuhur</div>
+            <div class="p-time">--:--</div>
+        </div>
+        <div class="prayer-item" id="prayer-ashar">
+            <div class="p-name">Ashar</div>
+            <div class="p-time">--:--</div>
+        </div>
+        <div class="prayer-item" id="prayer-maghrib">
+            <div class="p-name">Maghrib</div>
+            <div class="p-time">--:--</div>
+        </div>
+        <div class="prayer-item" id="prayer-isya">
+            <div class="p-name">Isya</div>
+            <div class="p-time">--:--</div>
+        </div>
+    </div>
+
+    <!-- Running Text Footer -->
+    <div class="footer-marquee">
+        <div class="marquee-content" id="running-text">
+            Loading...
+        </div>
+    </div>
+
+    <!-- Audio Beep -->
+    <!-- We will generate sound via JS, no audio tag needed -->
+
+    <script src="/static/script.js"></script>
+</body>
+
+</html>

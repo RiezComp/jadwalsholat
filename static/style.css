@@ -1,0 +1,317 @@
+:root {
+    --text-color: #ffffff;
+    --bg-overlay: rgba(0, 0, 0, 0.4);
+    --top-bar-bg: rgba(0, 0, 0, 0.6);
+    --prayer-bg-default: rgba(0, 0, 0, 0.6);
+    --prayer-active-bg: #e63946;
+    --prayer-next-bg: #f4a261;
+    --font-main: 'Roboto', sans-serif;
+
+    /* Dedicated Prayer Colors from reference (approx) */
+    --imsak-color: #4a5568;
+    --subuh-color: #264653;
+    /* Blue/Green */
+    --terbit-color: #2a9d8f;
+    /* Cyan */
+    --dzuhur-color: #e9c46a;
+    /* Yellow */
+    --ashar-color: #f4a261;
+    /* Orange */
+    --maghrib-color: #e76f51;
+    /* Red/Orange */
+    --isya-color: #457b9d;
+    /* Blue */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-main);
+    color: var(--text-color);
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    background: #000;
+}
+
+/* Background Layer */
+.bg-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+}
+
+.bg-image.active {
+    opacity: 1;
+}
+
+/* Top Bar */
+.top-bar {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    height: 15vh;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.4));
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.date-box,
+.clock-box {
+    width: 20%;
+    text-align: center;
+}
+
+.date-box {
+    text-align: left;
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
+    padding-right: 20px;
+}
+
+#hijri-date {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #ffd700;
+    /* Gold */
+}
+
+.gregorian {
+    font-size: 1.2rem;
+    margin-top: 5px;
+    opacity: 0.9;
+}
+
+.clock-box {
+    font-size: 4.5rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 5px #000;
+    color: #e63946;
+}
+
+.mosque-info {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.mosque-icon img {
+    margin-right: 20px;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8));
+}
+
+.mosque-text h1 {
+    font-size: 2.2rem;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px black;
+}
+
+.mosque-text p {
+    font-size: 1rem;
+    margin-bottom: 2px;
+}
+
+/* Main Content (Spacer) */
+.main-content {
+    position: relative;
+    z-index: 5;
+    height: 65vh;
+    /* 100 - 15(top) - 20(bottom/run) */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Iqomah Overlay */
+.iqomah-overlay {
+    background: rgba(0, 0, 0, 0.9);
+    padding: 40px 80px;
+    border: 4px solid #e63946;
+    border-radius: 20px;
+    text-align: center;
+    min-width: 60%;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+}
+
+.hidden {
+    display: none !important;
+}
+
+.iqomah-label {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #e63946;
+    margin-bottom: 10px;
+}
+
+.iqomah-timer {
+    font-size: 8rem;
+    font-weight: 800;
+    color: #fff;
+}
+
+.iqomah-sub {
+    font-size: 1.5rem;
+    color: #aaa;
+}
+
+.sholat-label {
+    font-size: 3rem;
+    color: #ffd700;
+}
+
+/* Bottom Strip */
+.prayer-strip {
+    position: absolute;
+    bottom: 5vh;
+    /* Height of footer */
+    width: 100%;
+    height: 15vh;
+    /* Increased height */
+    z-index: 10;
+    display: flex;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.prayer-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+}
+
+/* Specific Colors for names header/background if desired, 
+   but for now let's just use colored backgrounds for the bars */
+
+#prayer-imsak {
+    background: var(--imsak-color);
+}
+
+#prayer-subuh {
+    background: var(--subuh-color);
+}
+
+#prayer-terbit {
+    background: var(--terbit-color);
+}
+
+#prayer-dzuhur {
+    background: var(--dzuhur-color);
+}
+
+#prayer-ashar {
+    background: var(--ashar-color);
+}
+
+#prayer-maghrib {
+    background: var(--maghrib-color);
+}
+
+#prayer-isya {
+    background: var(--isya-color);
+}
+
+.prayer-item.active {
+    background: #fff;
+    color: #000;
+    transform: scale(1.05);
+    /* Pop out */
+    z-index: 20;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    border: 3px solid #ffd700;
+}
+
+.p-name {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 5px;
+    background: rgba(0, 0, 0, 0.3);
+    width: 100%;
+    text-align: center;
+    padding: 5px 0;
+}
+
+.prayer-item.active .p-name {
+    background: rgba(0, 0, 0, 0.1);
+    font-weight: 700;
+}
+
+.p-time {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+/* Footer Marquee */
+.footer-marquee {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 5vh;
+    background: #000000;
+    z-index: 10;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    border-top: 2px solid #ffd700;
+}
+
+.marquee-content {
+    white-space: nowrap;
+    position: absolute;
+    will-change: transform;
+    animation: marquee 20s linear infinite;
+    font-size: 1.5rem;
+    padding-left: 100%;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
