@@ -146,29 +146,23 @@ function checkPrayerTime(now) {
 }
 
 // --- Audio ---
-function beep(duration, frequency, count) {
-    if (count <= 0) return;
+function playAudio(type) {
+    if (!config.audio || !config.audio[type]) {
+        console.log("Audio config missing for:", type);
+        return;
+    }
 
+    // Resume context if needed (browsers block auto-audio sometimes)
     if (audioCtx.state === 'suspended') audioCtx.resume();
 
-    const oscillator = audioCtx.createOscillator();
-    const gainNode = audioCtx.createGain();
+    const filename = config.audio[type];
+    const audioPath = `/static/sounds/${filename}`;
 
-    oscillator.connect(gainNode);
-    gainNode.connect(audioCtx.destination);
+    // Check if filename is empty
+    if (!filename) return;
 
-    oscillator.type = 'square';
-    oscillator.frequency.value = frequency; // Hz
-    gainNode.gain.value = 0.1; // Volume
-
-    oscillator.start();
-
-    setTimeout(() => {
-        oscillator.stop();
-        if (count > 1) {
-            setTimeout(() => beep(duration, frequency, count - 1), 200); // 200ms pause
-        }
-    }, duration);
+    const audio = new Audio(audioPath);
+    audio.play().catch(e => console.error("Audio play failed:", e));
 }
 
 

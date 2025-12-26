@@ -10,6 +10,11 @@
     "mosque_phone": "HP: 0856-209-2003",
     "iqomah_delay_minutes": 10,
     "background_interval": 10,
+    "audio": {
+        "pre_adhan": "pre_adhan.mp3",
+        "adhan": "adhan.mp3",
+        "iqomah": "iqomah.mp3"
+    },
     "running_text": [
         "Selamat Datang di Masjid Al-Ikhlas Kp.Jelegong.",
         "Mohon nonaktifkan HP saat sholat berjamaah.",
