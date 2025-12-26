@@ -172,8 +172,8 @@ function triggerPreAdhan(prayerName, prayerDate) {
     currentState = 'PRE_ADHAN';
     targetTime = prayerDate;
 
-    // Beep 1x
-    beep(500, 880, 1);
+    // Play Custom Audio
+    playAudio('pre_adhan');
 
     // UI
     document.getElementById('pre-adhan-name').innerText = prayerName.toUpperCase(); // Or map to indo
@@ -193,8 +193,8 @@ function triggerAdhan(prayerName) {
     console.log(`Adhan for ${prayerName}`);
     currentState = 'ADHAN';
 
-    // Beep continuous-ish (3x long)
-    beep(1000, 440, 3);
+    // Play Custom Audio
+    playAudio('adhan');
 
     // UI
     document.getElementById('pre-adhan-overlay').classList.add('hidden');
@@ -220,8 +220,8 @@ function startIqomahSequence() {
     const now = new Date();
     targetTime = new Date(now.getTime() + delayMin * 60000);
 
-    // Beep 2x
-    beep(500, 660, 2);
+    // Play Custom Audio
+    playAudio('iqomah');
 
     document.getElementById('adhan-overlay').classList.add('hidden');
     document.getElementById('iqomah-overlay').classList.remove('hidden');
@@ -241,8 +241,8 @@ function updateIqomahCountdown(now) {
 
 function enterSholatMode() {
     currentState = 'SHOLAT';
-    // Beep Long
-    beep(2000, 300, 1);
+    // Play Custom Audio (Optional)
+    // playAudio('sholat');
 
     document.getElementById('iqomah-overlay').classList.add('hidden');
     document.getElementById('sholat-overlay').classList.remove('hidden');
